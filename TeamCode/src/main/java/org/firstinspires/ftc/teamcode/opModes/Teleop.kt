@@ -10,13 +10,13 @@ import dev.nextftc.robot.triggers.CommandGamepad
 import dev.nextftc.robot.triggers.Trigger
 import org.firstinspires.ftc.teamcode.util.subsystems.Robot
 
-@NextTeleop
+@NextTeleop("teleop_test")
 class Teleop(robot: Robot) : NextOpMode(robot) {
     init {
         val gp1 = CommandGamepad(Trigger.defaultEventLoop, gamepad1)
         val gp2 = CommandGamepad(Trigger.defaultEventLoop, gamepad2)
 
-        Trigger { robot.intake.artifacts > 2 }.onTrue(
+        Trigger { robot.intake.artifacts > 3 }.onTrue(
             sequential(
                 robot.intake.reverse,
                 waitMs(250.0),
@@ -36,7 +36,8 @@ class Teleop(robot: Robot) : NextOpMode(robot) {
             .toggleOnTrue(robot.catapult.volt)
             .toggleOnFalse(robot.catapult.down)
 
-        gp2.leftBumper
-            .onTrue(robot.catapult.stabilize)
+        gp2.leftBumper.onTrue(robot.catapult.stabilize)
+
+        gp2.a.onTrue(instant(robot.intake::reset))
     }
 }
