@@ -5,8 +5,7 @@ import dev.nextftc.robot.NextRobot
 
 class Robot : NextRobot {
     val intake = Intake()
-    val catapult = Catapult()
 
     override val mechanisms: Set<Mechanism>
-        get() = setOf(intake, catapult)
+        get() = setOf(intake)
 }
