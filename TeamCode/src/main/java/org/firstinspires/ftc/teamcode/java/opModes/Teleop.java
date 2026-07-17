@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.intoTheDeep.java.opModes;
+package org.firstinspires.ftc.teamcode.java.opModes;
 
-import org.firstinspires.ftc.teamcode.intoTheDeep.java.subsystems.Robot;
+import org.firstinspires.ftc.teamcode.java.subsystems.Robot;
 
 import dev.nextftc.robot.opmode.NextOpMode;
 import dev.nextftc.robot.opmode.NextTeleop;
@@ -14,6 +14,12 @@ public class Teleop extends NextOpMode {
 
         CommandGamepad gp1 = new CommandGamepad(Trigger.Companion.getDefaultEventLoop(), gamepad1);
         CommandGamepad gp2 = new CommandGamepad(Trigger.Companion.getDefaultEventLoop(), gamepad2);
+
+        robot.drivetrain.drive(
+                gp1.leftStickY().getValue(),
+                gp1.leftStickX().getValue(),
+                gp1.rightStickX().getValue()
+        );
 
         gp2.rightBumper()
                 .toggleOnTrue(robot.slides.up)

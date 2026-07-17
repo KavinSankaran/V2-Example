@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.intoTheDeep.kotlin.subsystems
+package org.firstinspires.ftc.teamcode.kotlin.subsystems
 
 import dev.nextftc.hardware.actuators.NextMotor
 import dev.nextftc.robot.Mechanism
